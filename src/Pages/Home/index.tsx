@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <ScrollView style={styles.container}>
       <PageHeader label="Home" backButton={true} type="withPhoto" />
-      <TransactionCard  label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
-      <TransactionCard  label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
-      <TransactionCard  label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
+      <TransactionCard  user="Poetri" label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
+      <TransactionCard  user="Poetri" label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
+      <TransactionCard  user="Poetri" label="Nike Travis Scott - Used" desc="Want to trade with New Balance, DM me if you are interested"/>
     </ScrollView>
   )
 }
