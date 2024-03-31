@@ -1,3 +1,3 @@
-
+import Profile from './Profile';
 import Home from './Home';
-export {Home};
+export {Home, Profile};

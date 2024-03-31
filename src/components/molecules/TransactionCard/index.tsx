@@ -23,6 +23,8 @@ const TransactionCard = ({ date, label, user, price, desc }) => {
             <Text style={styles.label}>{label}</Text>
             <Text style={styles.username}>{user}</Text>
             <Text style={styles.desc}numberOfLines={2} >{desc}</Text>
+            <Gap height={10}/>
+            <Button label="Chat"/>
           </View>
         </View>
       </View>
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     elevation: 8,
+    // marginTop: 50,
   },
   label: {
     color: '#13274A',

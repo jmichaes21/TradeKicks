@@ -3,14 +3,17 @@ import React, {useState} from 'react';
 import {Button} from '../..';
 import {DummyPhoto} from '../../../assets/images';
 import {SearchBar} from '@rneui/themed';
-
+import { useNavigation } from '@react-navigation/native';
 const PageHeader = ({label, backButton, onPress, type}) => {
   if (type === 'withPhoto') {
+    const navigation = useNavigation();
     return (
       <View style={styles.containerWithPhoto}>
         <View style={styles.leftContent}>
           <Text style={styles.label}>Home</Text>
-          <Image style={styles.face} source={DummyPhoto} />
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Image style={styles.face} source={DummyPhoto} />
+          </TouchableOpacity>
         </View>
         <SearchBar
           platform="android"
@@ -39,6 +42,9 @@ const PageHeader = ({label, backButton, onPress, type}) => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconButton} onPress={() => handleIconPress(4)}>
           <Text>Icon 4</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconButton} onPress={() => handleIconPress(4)}>
+          <Text>Icon 5</Text>
         </TouchableOpacity>
       </View>
       </View>
@@ -125,6 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
     marginHorizontal: 20,
+    marginBottom: -45,
   },
   iconButton: {
     width: 50,

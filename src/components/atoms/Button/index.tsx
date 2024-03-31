@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: backgroundColor,
     paddingVertical: 10,
     borderRadius: 20,
-    maxWidth: 90,
+    maxWidth: 230,
   }),
   label: textColor => ({
     textAlign: 'center',
