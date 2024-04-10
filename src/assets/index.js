@@ -21,6 +21,14 @@ import Settings from './icons/Settings.svg';
 import SwapIcons from './icons/Swap.svg';
 import SetIcon from './icons/Set.svg';
 import UpIcon from './icons/Up.svg';
+import UploadPictures from './icons/UploadPictures.svg';
+import PencilIcon from './icons/Pencil.svg';
+import NIKEcategory from './logo/NIKEcategory.svg';
+import AIRJORDANcategory from './logo/AIRJORDANcategory.svg';
+import YEEZYcategory from './logo/YEEZYcategory.svg';
+import ADIDAScategory from './logo/ADIDAScategory.svg';
+import NBcategory from './logo/NBcategory.svg';
+import CONVERSEcategory from './logo/CONVERSEcategory.svg';
 
 export {
   Back,
@@ -45,4 +53,12 @@ export {
   SwapIcons,
   SetIcon,
   UpIcon,
+  UploadPictures,
+  PencilIcon,
+  NIKEcategory,
+  AIRJORDANcategory,
+  YEEZYcategory,
+  ADIDAScategory,
+  NBcategory,
+  CONVERSEcategory,
 };
