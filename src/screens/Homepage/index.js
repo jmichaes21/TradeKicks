@@ -1,5 +1,5 @@
-/* eslint-disable prettier/prettier */
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -7,7 +7,12 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import React from 'react';
+import {PageHeader, TransactionCard} from '../../components';
+import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
+import React, {useEffect, useState} from 'react';
+import {Card} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
 import {
   Adidas,
   AirJordan,
@@ -28,85 +33,83 @@ import {
   aJordan,
   PencilIcon,
 } from '../../assets';
-import Gap from '../../components/atoms/gap';
-
-const dummyData = [
-  {
-    id: '1',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '2',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '3',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '4',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '5',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '6',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '7',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  {
-    id: '8',
-    image: aJordan,
-    owner: "Ta'Litha",
-    rating: 4.5,
-    message: 'Want to trade with New Balance, DM me if you are interested',
-  },
-  // Add more dummy data as needed
-];
+import {Gap} from '../../components';
+import {Product} from '../../assets/images';
 
 const Homepage = () => {
+  const [userData, setuserData] = useState(null);
+  const getUserData = async userId => {
+    let userData = null;
+    await firestore()
+      .collection('users')
+      .doc(userId)
+      .get()
+      .then(documentSnapshot => {
+        if (documentSnapshot.exists) {
+          userData = documentSnapshot.data();
+        }
+      });
+    return userData;
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const navigation = useNavigation();
+  const [posts, setPosts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const list = [];
+        await firestore()
+          .collection('posts')
+          .get()
+          .then(async querySnapshot => {
+            // console.log('Total Posts: ', querySnapshot.size);
+            for (const doc of querySnapshot.docs) {
+              const {post, user, postImg, product: docProduct} = doc.data();
+              const userData = await getUserData(user);
+              list.push({
+                id: doc.id,
+                image: postImg,
+                owner: userData ? userData.username : 'Unknown',
+                message: post,
+                product: docProduct,
+              });
+            }
+          });
+
+        setPosts(list);
+        if (loading) {
+          setLoading(false);
+        }
+
+        console.log('Posts:', posts);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   const renderItem = ({item}) => (
     <View style={styles.content1}>
-      <Image source={item.image} style={styles.productImg} />
+      <Image source={{uri: item.image}} style={styles.productImg} />
       <View style={styles.userCaption}>
         <Profile />
         <View style={styles.caption}>
-          <Text style={styles.productName}>Nike Travis Scott - Used</Text>
+          <Text style={styles.productName}>{item.product}</Text>
           <View style={styles.nameRating}>
             <Text style={styles.owner}>{item.owner}</Text>
-            <Star style={styles.star} />
-            <Text>{item.rating}</Text>
           </View>
           <View style={styles.messageContainer}>
             <Text style={styles.messages}>{item.message}</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <View style={styles.chatButton}>
               <Messageicon />
               <Text style={styles.chatStyle}>Chat</Text>
@@ -126,7 +129,9 @@ const Homepage = () => {
           <TouchableOpacity>
             <ListSquare style={styles.ListSquare} />
           </TouchableOpacity>
-          <Profile style={styles.profile} />
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Profile style={styles.profile} />
+          </TouchableOpacity>
         </View>
         <View style={styles.midHeader}>
           <TouchableOpacity>
@@ -165,20 +170,26 @@ const Homepage = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <View style={styles.contentContainer}>
         <FlatList
-          data={dummyData}
+          data={posts}
           keyExtractor={item => item.id}
           renderItem={renderItem}
+          multiline
+          numberOfLines={1}
           contentContainerStyle={styles.content}
           showsVerticalScrollIndicator={false}
         />
       </View>
+
       <View style={styles.footer}>
         <TouchableOpacity>
-          <View style={styles.createPostButton}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('CreatePost')}
+            style={styles.createPostButton}>
             <PencilIcon />
-          </View>
+          </TouchableOpacity>
         </TouchableOpacity>
         <View style={styles.Navigation}>
           <TouchableOpacity>
@@ -191,7 +202,7 @@ const Homepage = () => {
               <Category />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <View style={styles.footerButttonChat}>
               <Chat />
             </View>
@@ -216,7 +227,10 @@ export default Homepage;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#DBD8D8',
+    backgroundColor: '#D9D9D9',
+  },
+  cardcontainder: {
+    marginTop: 30,
   },
   pageHeader: {
     zIndex: 2,
@@ -233,7 +247,7 @@ const styles = StyleSheet.create({
   homeText: {
     fontSize: 21,
     color: 'white',
-    marginRight: 80,
+    marginRight: 150,
   },
   ListSquare: {
     marginRight: 14,
@@ -287,6 +301,9 @@ const styles = StyleSheet.create({
     marginBottom: -20,
     elevation: 5,
   },
+  contentContainer: {
+    backgroundColor: 'black',
+  },
   content: {
     backgroundColor: '#DBD8D8',
     paddingVertical: 20,
@@ -316,9 +333,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 12,
   },
-  nameRating: {
-    flexDirection: 'row',
-  },
   caption: {
     marginTop: 3,
     marginLeft: 5,
@@ -326,13 +340,9 @@ const styles = StyleSheet.create({
   owner: {
     marginRight: 5,
   },
-  star: {
-    marginTop: 2,
-    marginRight: 4,
-  },
   messageContainer: {
     marginTop: 5,
-    width: 175,
+    width: 275,
   },
   messages: {
     fontSize: 12,
@@ -352,12 +362,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   footer: {
-    width: 360,
+    width: 420,
     height: 44,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -205,
+    marginTop: -60,
   },
   footerButtton: {
     width: 25,

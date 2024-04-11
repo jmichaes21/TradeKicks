@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import {Gap} from '../../components';
 import {Card, Avatar} from 'react-native-elements';
 import {View, Text, StyleSheet} from 'react-native';
-import {DummyPhoto} from '../../../src/assets/images/';
 import firestore from '@react-native-firebase/firestore';
 import { auth } from '../../../config/firebase';
 const Profile = () => {
@@ -46,7 +45,7 @@ const Profile = () => {
               rounded
               size={120}
               containerStyle={styles.avatar}
-              source={DummyPhoto}
+              
             />
             <Gap height={26} />
             <View style={styles.userInfoText}>
