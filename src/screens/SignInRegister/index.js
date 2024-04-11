@@ -2,12 +2,15 @@
 import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Logo, Line} from '../../assets';
-
+import {useNavigation} from '@react-navigation/native';
 const SignInRegister = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={Logo} style={styles.logo} />
-      <TouchableOpacity activeOpacity={0.5}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        onPress={() => navigation.navigate('Login')}>
         <View style={styles.buttonContainer}>
           <Text style={styles.textStyle}>Login</Text>
         </View>
@@ -17,7 +20,9 @@ const SignInRegister = () => {
         <Text style={styles.textOr}>Or</Text>
         <Line style={styles.line2} />
       </View>
-      <TouchableOpacity activeOpacity={0.5}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        onPress={() => navigation.navigate('Register')}>
         <View style={styles.buttonContainer}>
           <Text style={styles.textStyle}>Register</Text>
         </View>

@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,12 +6,33 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Button,
+  Alert,
 } from 'react-native';
-import React from 'react';
 import {Logo} from '../../assets';
-import Gap from '../../components/atoms/gap';
-
+import {createAccount} from '../../../config/firebase';
+import {Gap} from '../../components';
+import {useNavigation} from '@react-navigation/native';
 const Register = () => {
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const onPressRegister = async () => {
+    try {
+      await createAccount({email, password, name});
+      // Jika pendaftaran berhasil, Anda bisa melakukan navigasi ke layar lain atau menampilkan pesan sukses
+      Alert.alert(
+        'Registration successful',
+        'You have successfully registered.',
+      );
+    } catch (error) {
+      // Jika terjadi kesalahan, tampilkan pesan kesalahan
+      Alert.alert('Registration failed', error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.top1}>
@@ -19,41 +40,42 @@ const Register = () => {
         <Text style={styles.registrationText}>Registration</Text>
       </View>
       <Gap height={20} />
-      <TextInput placeholder="Full Name" style={styles.input} />
+      <TextInput
+        placeholder="User Name"
+        onChangeText={setName}
+        value={name}
+        style={styles.input}
+      />
       <Gap height={12} />
       <TextInput
         placeholder="E-Mail"
         style={styles.input}
         keyboardType="email-address"
-      />
-      <Gap height={12} />
-      <TextInput
-        placeholder="Phone Number"
-        style={styles.input}
-        keyboardType="numeric"
+        onChangeText={setEmail}
+        value={email}
       />
       <Gap height={12} />
       <TextInput
         placeholder="Password"
         style={styles.input}
         secureTextEntry={true}
+        onChangeText={setPassword}
+        value={password}
       />
       <Gap height={12} />
-      <TextInput
-        placeholder="Confirm Password"
-        style={styles.input}
-        secureTextEntry={true}
-      />
       <Gap height={40} />
-      <TouchableOpacity activeOpacity={0.5}>
+      <TouchableOpacity activeOpacity={0.5} onPress={onPressRegister}>
         <View style={styles.buttonContainer}>
           <Text style={styles.textStyle}>Register</Text>
         </View>
       </TouchableOpacity>
+      {/* <Button title="Register" onPress={onPressRegister} /> */}
       <Gap height={4} />
       <View style={styles.lowerContainer}>
         <Text style={styles.lowerText}>Have an account?</Text>
-        <TouchableOpacity style={styles.signInButton}>
+        <TouchableOpacity
+          style={styles.signInButton}
+          onPress={() => navigation.navigate('Login')}>
           <Text style={styles.signInText}>Sign In</Text>
         </TouchableOpacity>
       </View>
@@ -61,9 +83,20 @@ const Register = () => {
   );
 };
 
-export default Register;
-
 const styles = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // input: {
+  //   width: '80%',
+  //   marginBottom: 10,
+  //   padding: 10,
+  //   borderWidth: 1,
+  //   borderColor: '#ccc',
+  //   borderRadius: 5,
+  // },
   container: {
     backgroundColor: '#3CD3E4',
     width: '100%',
@@ -121,3 +154,5 @@ const styles = StyleSheet.create({
     height: 20,
   },
 });
+
+export default Register;
