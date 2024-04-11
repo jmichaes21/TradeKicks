@@ -2,12 +2,14 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Back, SetIcon, SwapIcons, UpIcon, aJordan} from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 
 const TradeDetails = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.Header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Back />
         </TouchableOpacity>
         <Text style={styles.headerTextStyle}>Trade</Text>

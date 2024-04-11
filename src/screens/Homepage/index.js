@@ -1,5 +1,5 @@
+/* eslint-disable prettier/prettier */
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -7,11 +7,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import {PageHeader, TransactionCard} from '../../components';
-import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import React, {useEffect, useState} from 'react';
-import {Card} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 import {
   Adidas,
@@ -27,14 +24,11 @@ import {
   Profile,
   Puma,
   Search,
-  Star,
   Settings,
   Yeezy,
-  aJordan,
   PencilIcon,
 } from '../../assets';
 import {Gap} from '../../components';
-import {Product} from '../../assets/images';
 
 const Homepage = () => {
   const [userData, setuserData] = useState(null);
@@ -197,7 +191,7 @@ const Homepage = () => {
               <Home />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
             <View style={styles.footerButtton}>
               <Category />
             </View>
@@ -212,7 +206,7 @@ const Homepage = () => {
               <Notification />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <View style={styles.footerButttonSettings}>
               <Settings />
             </View>
@@ -247,7 +241,7 @@ const styles = StyleSheet.create({
   homeText: {
     fontSize: 21,
     color: 'white',
-    marginRight: 150,
+    marginRight: 100,
   },
   ListSquare: {
     marginRight: 14,
@@ -355,19 +349,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#13274A',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 150,
+    marginLeft: 170,
   },
   chatStyle: {
     color: 'white',
     marginLeft: 5,
   },
   footer: {
-    width: 420,
+    width: '100%',
     height: 44,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -60,
+    marginTop: -205,
   },
   footerButtton: {
     width: 25,

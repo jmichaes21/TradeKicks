@@ -16,8 +16,10 @@ import {
   YEEZYcategory,
   Category as Categoryicon,
 } from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 
 const Category = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -65,7 +67,7 @@ const Category = () => {
       </View>
       <View style={styles.footer}>
         <View style={styles.Navigation}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
             <View style={styles.footerButtton}>
               <Home />
             </View>
@@ -75,7 +77,7 @@ const Category = () => {
               <Categoryicon />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <View style={styles.footerButttonChat}>
               <Chat />
             </View>
@@ -85,7 +87,7 @@ const Category = () => {
               <Notification />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
             <View style={styles.footerButttonSettings}>
               <Settings />
             </View>
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   footer: {
-    width: 360,
+    width: '100%',
     height: 44,
     backgroundColor: 'white',
     justifyContent: 'center',

@@ -10,8 +10,10 @@ import {
   Settings,
   Category as Categoryicon,
 } from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 
 const Settingscreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -38,17 +40,17 @@ const Settingscreen = () => {
       </View>
       <View style={styles.footer}>
         <View style={styles.Navigation}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
             <View style={styles.footerButtton}>
               <Home />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
             <View style={styles.footerButtton}>
               <Categoryicon />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
             <View style={styles.footerButttonChat}>
               <Chat />
             </View>
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   footer: {
-    width: 360,
+    width: '100%',
     height: 44,
     backgroundColor: 'white',
     justifyContent: 'center',

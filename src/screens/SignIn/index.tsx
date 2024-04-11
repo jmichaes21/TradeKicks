@@ -1,4 +1,4 @@
-// Import necessary dependencies
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Alert, TouchableOpacity } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';

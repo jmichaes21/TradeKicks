@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+import Open from './Open/index';
+import Category from './Category';
 import Profile from './Profile';
 import Homepage from './Homepage';
 import Chat from './Chat';
@@ -6,4 +9,5 @@ import Register from './Register';
 import CreatePost from './CreatePost';
 import SignInRegister from './SignInRegister';
 import TradeDetails from './TradeDetails';
-export {TradeDetails, Login, Homepage, Profile, Chat, Register, CreatePost, SignInRegister};
+import Settings from './Settings';
+export {Open, Settings, TradeDetails, Category, Login, Homepage, Profile, Chat, Register, CreatePost, SignInRegister};

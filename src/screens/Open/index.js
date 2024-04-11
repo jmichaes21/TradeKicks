@@ -1,9 +1,21 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Logo} from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 
 const Open = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      navigation.navigate('SignInRegister');
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  });
   return (
     <View style={styles.container}>
       <Image source={Logo} style={styles.logo} />

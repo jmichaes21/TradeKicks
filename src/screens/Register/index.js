@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -6,7 +7,6 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Button,
   Alert,
 } from 'react-native';
 import {Logo} from '../../assets';
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 41,
-    border: 1,
     borderColor: '#020202',
     borderRadius: 10,
     paddingLeft: 10,
