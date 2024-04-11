@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "803759678441",
+    "firebase_url": "https://chat-tradekicks-default-rtdb.firebaseio.com",
+    "project_id": "chat-tradekicks",
+    "storage_bucket": "chat-tradekicks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803759678441:android:5926722ff0ad11fdebe178",
+        "android_client_info": {
+          "package_name": "com.tradekicks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5baQgsM4Y2zshXHcyVI9sELLViJ4Wygw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
