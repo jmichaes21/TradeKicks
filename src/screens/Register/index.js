@@ -5,13 +5,12 @@ import {
   Text,
   View,
   Image,
-  TextInput,
   TouchableOpacity,
   Alert,
 } from 'react-native';
 import {Logo} from '../../assets';
 import {createAccount} from '../../../config/firebase';
-import {Gap} from '../../components';
+import {Gap, TextInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
 const Register = () => {
   const navigation = useNavigation();
@@ -39,38 +38,28 @@ const Register = () => {
         <Image source={Logo} style={styles.logo} />
         <Text style={styles.registrationText}>Registration</Text>
       </View>
-      <Gap height={20} />
+      <Gap height={50} />
+      <TextInput placeholder="User Name" value={name} onChangeText={setName} />
       <TextInput
-        placeholder="User Name"
-        onChangeText={setName}
-        value={name}
-        style={styles.input}
-      />
-      <Gap height={12} />
-      <TextInput
-        placeholder="E-Mail"
-        style={styles.input}
-        keyboardType="email-address"
-        onChangeText={setEmail}
+        placeholder="E-mail"
         value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
       />
-      <Gap height={12} />
       <TextInput
         placeholder="Password"
-        style={styles.input}
-        secureTextEntry={true}
-        onChangeText={setPassword}
         value={password}
+        onChangeText={setPassword}
+        secureTextEntry={true}
       />
-      <Gap height={12} />
-      <Gap height={40} />
+      <Gap height={26} />
       <TouchableOpacity activeOpacity={0.5} onPress={onPressRegister}>
         <View style={styles.buttonContainer}>
           <Text style={styles.textStyle}>Register</Text>
         </View>
       </TouchableOpacity>
       {/* <Button title="Register" onPress={onPressRegister} /> */}
-      <Gap height={4} />
+      <Gap height={5.66} />
       <View style={styles.lowerContainer}>
         <Text style={styles.lowerText}>Have an account?</Text>
         <TouchableOpacity
@@ -84,19 +73,6 @@ const Register = () => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // input: {
-  //   width: '80%',
-  //   marginBottom: 10,
-  //   padding: 10,
-  //   borderWidth: 1,
-  //   borderColor: '#ccc',
-  //   borderRadius: 5,
-  // },
   container: {
     backgroundColor: '#3CD3E4',
     width: '100%',
@@ -114,22 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: 'white',
   },
-  input: {
-    height: 41,
-    borderColor: '#020202',
-    borderRadius: 10,
-    paddingLeft: 10,
-    marginHorizontal: 20,
-    backgroundColor: '#F7F2F2',
-  },
   buttonContainer: {
-    width: 320,
-    height: 39,
     backgroundColor: '#13274A',
     borderRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center',
     marginHorizontal: 17,
+    paddingVertical: 8,
+    marginHorizontal: 45,
   },
   textStyle: {
     fontSize: 15,
@@ -137,7 +104,7 @@ const styles = StyleSheet.create({
   },
   lowerContainer: {
     flexDirection: 'row',
-    marginHorizontal: 105,
+    marginHorizontal: 119,
     width: 150,
     justifyContent: 'center',
   },

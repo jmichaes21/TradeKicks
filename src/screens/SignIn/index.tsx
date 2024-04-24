@@ -1,17 +1,29 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Alert, TouchableOpacity } from 'react-native';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../../../config/firebase';
-import { Gap } from '../../components';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Image,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {app} from '../../../config/firebase';
+import {Gap} from '../../components';
 import {Logo} from '../../assets';
 const auth = getAuth(app);
-const SignIn = ({ navigation }) => {
+const SignIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const onPressLogin = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const user = userCredential.user;
       console.log('Logged in user:', user);
       navigation.replace('Homepage');
@@ -82,7 +94,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
   },
-
 });
 
 export default SignIn;
