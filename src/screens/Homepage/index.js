@@ -120,9 +120,6 @@ const Homepage = () => {
         <View style={styles.topHeader}>
           <Image source={Logo} style={styles.logo} />
           <Text style={styles.homeText}>Home</Text>
-          <TouchableOpacity>
-            <ListSquare style={styles.ListSquare} />
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Profile style={styles.profile} />
           </TouchableOpacity>
@@ -247,7 +244,10 @@ const styles = StyleSheet.create({
     marginRight: 14,
   },
   profile: {
-    marginTop: 5,
+    marginTop: 18,
+    marginLeft: 80,
+    marginRight: 22,
+    marginBottom: 15,
   },
   midHeader: {
     alignItems: 'center',
@@ -296,11 +296,17 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   contentContainer: {
-    backgroundColor: 'black',
+    backgroundColor: '#DBD8D8',
+    marginBottom: 100,
+    marginHorizontal: 13,
+    paddingBottom: 100,
   },
   content: {
+    paddingTop: 15,
     backgroundColor: '#DBD8D8',
-    paddingVertical: 20,
+    alignItems: 'center',
+    marginBottom: 100,
+    paddingBottom: 63,
   },
   content1: {
     width: 330,
@@ -310,6 +316,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 10,
     elevation: 5,
+    marginBottom: 21,
   },
   productImg: {
     width: 310,
@@ -319,8 +326,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   productName: {
-    fontSize: 20,
+    fontSize: 19,
     color: '#13274A',
+    fontWeight: 'bold',
   },
   userCaption: {
     flexDirection: 'row',
