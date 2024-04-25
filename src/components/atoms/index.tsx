@@ -1,3 +1,3 @@
 /* eslint-disable prettier/prettier */
-import Gap from './gap';
-export { Gap};
+import Gap from './Gap';
+export {Gap};
