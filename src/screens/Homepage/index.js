@@ -133,33 +133,7 @@ const Homepage = () => {
           </TouchableOpacity>
         </View>
         <Gap height={12} />
-        <View style={styles.botHeader}>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Nike />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <AirJordan />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainerPuma}>
-              <Puma />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Adidas />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Yeezy />
-            </View>
-          </TouchableOpacity>
-        </View>
+        <View style={styles.botHeader} />
       </View>
 
       <View style={styles.contentContainer}>
@@ -254,7 +228,7 @@ const styles = StyleSheet.create({
     marginTop: -12,
   },
   searchContainer: {
-    marginTop: -5,
+    marginTop: 15,
     alignItems: 'center',
     flexDirection: 'row',
     width: 330,
@@ -267,33 +241,6 @@ const styles = StyleSheet.create({
   searchText: {
     fontSize: 13,
     marginLeft: 10,
-  },
-  botHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  brandContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: 50,
-    height: 48,
-    borderRadius: 10,
-    marginHorizontal: 8,
-    marginBottom: -20,
-    elevation: 10,
-  },
-  brandContainerPuma: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-    width: 53,
-    height: 48,
-    borderRadius: 10,
-    marginHorizontal: 10,
-    marginBottom: -20,
-    elevation: 5,
   },
   contentContainer: {
     backgroundColor: '#DBD8D8',
@@ -313,10 +260,10 @@ const styles = StyleSheet.create({
     height: 330,
     backgroundColor: 'white',
     marginHorizontal: 10,
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 10,
     elevation: 5,
-    marginBottom: 21,
+    marginBottom: 15,
   },
   productImg: {
     width: 310,
@@ -370,6 +317,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: -205,
+    marginBottom: 20,
   },
   footerButtton: {
     width: 25,
