@@ -10,4 +10,5 @@ import CreatePost from './CreatePost';
 import SignInRegister from './SignInRegister';
 import TradeDetails from './TradeDetails';
 import Settings from './Settings';
-export {Open, Settings, TradeDetails, Category, Login, Homepage, Profile, Chat, Register, CreatePost, SignInRegister};
+import ListChat from './ListChat';
+export {Open, Settings, TradeDetails, Category, Login, Homepage, Profile, Chat, Register, CreatePost, SignInRegister, ListChat};
