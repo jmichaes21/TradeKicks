@@ -22,9 +22,9 @@ const Settingscreen = () => {
         <Profile style={styles.profile} />
       </View>
       <View style={styles.content}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ManageAccount')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.textStyle}>Privacy & Security</Text>
+            <Text style={styles.textStyle}>Manage Account</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 410,
+    marginTop: '105%',
   },
   footerButtton: {
     width: 25,
