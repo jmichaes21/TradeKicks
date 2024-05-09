@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 const index = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Open"
         component={Open}
         options={{headerShown: false}}
@@ -26,7 +26,7 @@ const index = () => {
         name="Register"
         component={Register}
         options={{headerShown: false}}
-      /> 
+      />  */}
       <Stack.Screen
         name="Category"
         component={Category}

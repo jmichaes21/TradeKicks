@@ -34,6 +34,11 @@ const Settingscreen = () => {
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.buttonContainer}>
+            <Text style={styles.textStyle}>Terms and Policies</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.buttonContainer}>
             <Text style={styles.textStyle}>Log Out</Text>
           </View>
         </TouchableOpacity>
@@ -101,8 +106,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 320,
-    height: 40,
+    width: 370,
+    height: 47,
     backgroundColor: '#13274A',
     borderRadius: 10,
     paddingLeft: 16,
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
-    fontSize: 13,
+    fontSize: 15,
     color: 'white',
     fontWeight: 'bold',
   },
