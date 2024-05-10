@@ -23,7 +23,7 @@ const ChatScreen = () => {
           <Backblack style={styles.back} />
         </TouchableOpacity>
         <Profile style={styles.profile} />
-        <Text style={styles.Name}>User</Text>
+        <Text style={styles.Name}>Wilson</Text>
         <TouchableOpacity onPress={() => navigation.navigate('TradeDetails')}>
           <Trade style={styles.trade} />
         </TouchableOpacity>

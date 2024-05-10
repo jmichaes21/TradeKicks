@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     fontSize: 30,
+    paddingHorizontal: 176,
   },
   userInfo: {
     flexDirection: 'row',
@@ -132,11 +133,13 @@ const styles = StyleSheet.create({
   userImgWrapper: {
     paddingTop: 15,
     paddingBottom: 15,
+    paddingLeft: '190%',
   },
   userImg: {
     width: 65,
     height: 70,
     borderRadius: 35,
+    marginLeft: 12,
   },
   textSection: {
     flexDirection: 'column',
@@ -153,10 +156,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 5,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 12,
   },
   userName: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   postTime: {
@@ -164,9 +167,10 @@ const styles = StyleSheet.create({
     color: '#666',
     fontWeight: '500',
     textAlign: 'right',
+    marginRight: 10,
   },
   chatText: {
-    fontSize: 16,
+    fontSize: 13,
     color: '#333333',
   },
   footer: {

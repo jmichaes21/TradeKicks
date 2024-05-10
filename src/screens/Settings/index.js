@@ -22,14 +22,19 @@ const Settingscreen = () => {
         <Profile style={styles.profile} />
       </View>
       <View style={styles.content}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ManageAccount')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.textStyle}>Privacy & Security</Text>
+            <Text style={styles.textStyle}>Manage Account</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.buttonContainer}>
             <Text style={styles.textStyle}>User Guide</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.textStyle}>Terms and Policies</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -101,8 +106,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 320,
-    height: 40,
+    width: 370,
+    height: 47,
     backgroundColor: '#13274A',
     borderRadius: 10,
     paddingLeft: 16,
@@ -115,7 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 410,
+    marginTop: '105%',
   },
   footerButtton: {
     width: 25,
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
-    fontSize: 13,
+    fontSize: 15,
     color: 'white',
     fontWeight: 'bold',
   },
