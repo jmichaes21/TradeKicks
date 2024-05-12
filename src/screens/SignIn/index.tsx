@@ -4,14 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   Image,
   Alert,
   TouchableOpacity,
 } from 'react-native';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import {app} from '../../../config/firebase';
-import {Gap} from '../../components';
+import {Gap, TextInput} from '../../components';
 import {Logo} from '../../assets';
 const auth = getAuth(app);
 const SignIn = ({navigation}) => {
@@ -40,8 +39,8 @@ const SignIn = ({navigation}) => {
         placeholder="Email"
         onChangeText={setEmail}
         value={email}
+        width={296}
       />
-      <Gap height={12} />
 
       <TextInput
         style={styles.input}
@@ -49,6 +48,7 @@ const SignIn = ({navigation}) => {
         onChangeText={setPassword}
         value={password}
         secureTextEntry
+        width={296}
       />
       <Gap height={36} />
       <TouchableOpacity activeOpacity={0.5} onPress={onPressLogin}>

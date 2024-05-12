@@ -7,11 +7,12 @@ const TextInput = ({
   onChangeText,
   keyboardType,
   secureTextEntry,
+  width,
 }) => {
   return (
     <View>
       <Input
-        style={styles.input}
+        style={[styles.input, {width}]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

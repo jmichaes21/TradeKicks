@@ -11,6 +11,7 @@ import {
   Category as Categoryicon,
 } from '../../assets';
 import {useNavigation} from '@react-navigation/native';
+import {Footer, Gap} from '../../components';
 
 const Settingscreen = () => {
   const navigation = useNavigation();
@@ -19,7 +20,9 @@ const Settingscreen = () => {
       <View style={styles.header}>
         <Image source={Logo} style={styles.logo} />
         <Text style={styles.textSettings}>Settings</Text>
-        <Profile style={styles.profile} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Profile style={styles.profile} />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <TouchableOpacity onPress={() => navigation.navigate('ManageAccount')}>
@@ -43,35 +46,7 @@ const Settingscreen = () => {
           </View>
         </TouchableOpacity>
       </View>
-      <View style={styles.footer}>
-        <View style={styles.Navigation}>
-          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-            <View style={styles.footerButtton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
-            <View style={styles.footerButtton}>
-              <Categoryicon />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-            <View style={styles.footerButttonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={false} marginTop={425} />
     </View>
   );
 };
@@ -99,7 +74,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   profile: {
-    marginLeft: 80,
+    marginLeft: 126,
   },
   content: {
     alignItems: 'center',

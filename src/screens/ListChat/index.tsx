@@ -1,7 +1,17 @@
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity  } from 'react-native';
+/* eslint-disable prettier/prettier */
+
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Logo, Profile, Home, Category, Chat, Notification, Settings } from '../../assets';
+import {useNavigation} from '@react-navigation/native';
+import {Logo, Profile} from '../../assets';
+import {Footer} from '../../components';
 
 const List = [
   {
@@ -36,11 +46,15 @@ const ListChat = () => {
         <Text style={styles.textListChat}>ListChat</Text>
         <Image source={Profile} style={styles.profile} />
       </View>
-      <FlatList 
+      <FlatList
         data={List}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Chat', { userName: item.userName })}>
+        renderItem={({item}) => (
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() =>
+              navigation.navigate('Chat', {userName: item.userName})
+            }>
             <View style={styles.userInfo}>
               <View style={styles.userImgWrapper}>
                 <Image style={styles.userImg} source={item.userImg} />
@@ -56,43 +70,10 @@ const ListChat = () => {
           </TouchableOpacity>
         )}
       />
-      <View style={styles.footer}>
-        <TouchableOpacity>
-        </TouchableOpacity>
-        <View style={styles.Navigation}>
-          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-            <View style={styles.footerButton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
-            <View style={styles.footerButton}>
-              <Category />
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-            <View style={styles.footerButtonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButtonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <View style={styles.footerButtonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={false} marginTop={100} />
     </View>
   );
 };
-
 
 export default ListChat;
 

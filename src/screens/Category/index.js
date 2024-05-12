@@ -17,6 +17,7 @@ import {
   Category as Categoryicon,
 } from '../../assets';
 import {useNavigation} from '@react-navigation/native';
+import {Footer, Gap} from '../../components';
 
 const Category = () => {
   const navigation = useNavigation();
@@ -25,7 +26,9 @@ const Category = () => {
       <View style={styles.header}>
         <Image source={Logo} style={styles.logo} />
         <Text style={styles.textCategory}>Category</Text>
-        <Profile style={styles.profile} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Profile style={styles.profile} />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <View style={styles.line}>
@@ -65,35 +68,7 @@ const Category = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.footer}>
-        <View style={styles.Navigation}>
-          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-            <View style={styles.footerButtton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButtton}>
-              <Categoryicon />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('ListChat')}>
-            <View style={styles.footerButttonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <View style={styles.footerButttonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={false} marginTop={213} />
     </View>
   );
 };
@@ -121,11 +96,13 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   profile: {
-    marginLeft: 70,
+    marginLeft: 126,
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 44,
+    marginBottom: -44,
   },
   Box: {
     width: 120,

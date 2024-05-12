@@ -1,5 +1,19 @@
 /* eslint-disable prettier/prettier */
-import {Open, TradeDetails, SignInRegister,Homepage, Settings, Category, Profile, Chat, Login, Register, CreatePost, ListChat, ManageAccount} from '../screens';
+import {
+  Open,
+  TradeDetails,
+  SignInRegister,
+  Homepage,
+  Settings,
+  Category,
+  Profile,
+  Chat,
+  Login,
+  Register,
+  CreatePost,
+  ListChat,
+  ManageAccount,
+} from '../screens';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -7,11 +21,11 @@ const Stack = createNativeStackNavigator();
 const index = () => {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Open"
         component={Open}
         options={{headerShown: false}}
-      /> 
+      />
       <Stack.Screen
         name="SignInRegister"
         component={SignInRegister}
@@ -26,12 +40,12 @@ const index = () => {
         name="Register"
         component={Register}
         options={{headerShown: false}}
-      />  */}
+      />
       <Stack.Screen
         name="Category"
         component={Category}
         options={{headerShown: false}}
-      /> 
+      />
       <Stack.Screen
         name="CreatePost"
         component={CreatePost}
