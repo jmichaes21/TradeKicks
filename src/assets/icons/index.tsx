@@ -23,7 +23,9 @@ import UpIcon from './Up.svg';
 import UploadPictures from './UploadPictures.svg';
 import PencilIcon from './Pencil.svg';
 import Trade from './trade.svg';
-
+import checked from './checked.png';
+import Group from './Group.png';
+import price from './price.png';
 export {
   Backblack,
   Back,
@@ -50,4 +52,7 @@ export {
   UploadPictures,
   PencilIcon,
   Trade,
+  checked,
+  Group,
+  price,
 };
