@@ -2,10 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import {Gap} from '../../components';
 import {Card, Avatar} from 'react-native-elements';
 import {View, Text, StyleSheet} from 'react-native';
-import firestore from '@react-native-firebase/firestore';
 import { auth } from '../../../config/firebase';
 const Profile = () => {
-  // const {user}=useContext(auth)
   const [posts, setPosts] = useState([]);
   const [userData, setUserData] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);

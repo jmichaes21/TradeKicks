@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {Logo} from '../../assets';
-import {createAccount} from '../../../config/firebase';
-import {Gap, TextInput} from '../../components';
+import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
+import {getDatabase, set, ref} from 'firebase/database';
+
 import {useNavigation} from '@react-navigation/native';
+import {Gap, TextInput} from '../../components';
+
 const Register = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -19,24 +21,35 @@ const Register = () => {
   const [name, setName] = useState('');
 
   const onPressRegister = async () => {
-    try {
-      await createAccount({email, password, name});
-      // Jika pendaftaran berhasil, Anda bisa melakukan navigasi ke layar lain atau menampilkan pesan sukses
-      Alert.alert(
-        'Registration successful',
-        'You have successfully registered.',
-      );
-    } catch (error) {
-      // Jika terjadi kesalahan, tampilkan pesan kesalahan
-      Alert.alert('Registration failed', error.message);
-    }
+    const data = {
+      name: name,
+      email: email,
+    };
+    const auth = getAuth();
+    const db = getDatabase();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        const user = userCredential.user;
+        set(ref(db, 'users/' + user.uid), data)
+          .then(() => {
+            Alert.alert(
+              'Registration successful',
+              'You have successfully registered.',
+            );
+          })
+          .catch(error => {
+            console.log('Error saving user data:', error.message);
+          });
+      })
+      .catch(error => {
+        Alert.alert('Registration failed', error.message);
+      });
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.top1}>
-        <Image source={Logo} style={styles.logo} />
-        <Text style={styles.registrationText}>Registration</Text>
+        <Text style={styles.registrationText}>Sing Up</Text>
       </View>
       <Gap height={50} />
       <TextInput placeholder="User Name" value={name} onChangeText={setName} />
@@ -46,6 +59,7 @@ const Register = () => {
         onChangeText={setEmail}
         keyboardType="email-address"
       />
+
       <TextInput
         placeholder="Password"
         value={password}
@@ -58,7 +72,6 @@ const Register = () => {
           <Text style={styles.textStyle}>Register</Text>
         </View>
       </TouchableOpacity>
-      {/* <Button title="Register" onPress={onPressRegister} /> */}
       <Gap height={5.66} />
       <View style={styles.lowerContainer}>
         <Text style={styles.lowerText}>Have an account?</Text>
@@ -96,7 +109,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 17,
     paddingVertical: 8,
-    marginHorizontal: 45,
   },
   textStyle: {
     fontSize: 15,

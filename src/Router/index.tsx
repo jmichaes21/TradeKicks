@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {Open, TradeDetails, SignInRegister,Homepage, Settings, Category, Profile, Chat, Login, Register, CreatePost} from '../screens';
+import {Open, TradeDetails, SignInRegister,Homepage, Settings, Category, Profile, Chat, Login, Register, CreatePost, ListChat} from '../screens';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -60,6 +60,11 @@ const index = () => {
       <Stack.Screen
         name="TradeDetails"
         component={TradeDetails}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ListChat"
+        component={ListChat}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

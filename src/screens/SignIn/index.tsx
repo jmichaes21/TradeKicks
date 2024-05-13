@@ -25,8 +25,8 @@ const SignIn = ({navigation}) => {
         password,
       );
       const user = userCredential.user;
+      navigation.navigate('Homepage')
       console.log('Logged in user:', user);
-      navigation.replace('Homepage');
     } catch (error) {
       console.log(error);
       Alert.alert('Login failure', error.message);

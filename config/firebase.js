@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import {getFirestore} from 'firebase/firestore';
-
+import {getDatabase} from 'firebase/database';
 // import '@react-native-firebase/storage';
 const firebaseConfig = {
   apiKey: 'AIzaSyDZiduCi1iNL0xxyCryK4YiUTHeApHnroA',
@@ -16,13 +16,14 @@ const firebaseConfig = {
   messagingSenderId: '803759678441',
   appId: '1:803759678441:web:7167c0bfd2a5de29ebe178',
   measurementId: 'G-S5WTQJPYNB',
+  databaseURL: 'https://chat-tradekicks-default-rtdb.firebaseio.com/',
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getFirestore();
 const firestore = getFirestore(app);
-
+const realTimeDatabase = getDatabase();
 const createAccount = async user => {
   try {
     const {user: createdUser} = await createUserWithEmailAndPassword(
@@ -63,4 +64,4 @@ const login = async (user, successCallback, errorCallback) => {
   }
 };
 
-export {auth, firestore, createAccount, login};
+export {auth, firestore, createAccount, login, realTimeDatabase};

@@ -167,7 +167,7 @@ const Homepage = () => {
               <Category />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <TouchableOpacity onPress={() => navigation.navigate('ListChat')}>
             <View style={styles.footerButttonChat}>
               <Chat />
             </View>
