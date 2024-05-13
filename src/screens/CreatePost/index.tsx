@@ -3,7 +3,6 @@ import React, {useState, useEffect, useContext} from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
   FlatList,
@@ -13,9 +12,7 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import {
-Back
-} from '../../assets';
+import {Back} from '../../assets';
 import {Card} from 'react-native-elements';
 import {launchImageLibrary} from 'react-native-image-picker';
 import firebase from '../../../config/firebase';
@@ -31,8 +28,8 @@ import firestore from '@react-native-firebase/firestore';
 //   } from '../../assets';
 import {Product} from '../../assets/images';
 import {auth} from '../../../config/firebase';
-import { Gap } from '../../components';
-import { useNavigation } from '@react-navigation/native';
+import {Gap, TextInput} from '../../components';
+import {useNavigation} from '@react-navigation/native';
 
 const CreatePost = () => {
   const navigation = useNavigation();
@@ -42,19 +39,17 @@ const CreatePost = () => {
   const [transferred, setTransferred] = useState(0);
   const [product, setProduct] = useState(null);
   const [post, setPost] = useState(null);
-useEffect(() => {
-  const unsubscribe = auth.onAuthStateChanged(user => {
-    if (user) {
-      setCurrentUser(user);
-    } else {
-      setCurrentUser(null);
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
 
-  return () => unsubscribe();
-}, []);
-
-
+    return () => unsubscribe();
+  }, []);
 
   const choosePhotoFromLibrary = () => {
     const options = {
@@ -102,10 +97,7 @@ useEffect(() => {
         await task;
         const imageUrl = await storageRef.getDownloadURL(); // Simpan URL gambar ke dalam variabel imageUrl
         setUploading(false);
-        Alert.alert(
-          'Photo uploaded!',
-          'Your post has been publish!',
-        );
+        Alert.alert('Photo uploaded!', 'Your post has been publish!');
         return imageUrl; // Kembalikan imageUrl dari fungsi uploadImage
       } catch (e) {
         console.error(e);
@@ -126,7 +118,7 @@ useEffect(() => {
       firestore()
         .collection('posts')
         .add({
-          userId: currentUser.uid, 
+          userId: currentUser.uid,
           post: post,
           postImg: imageUrl,
           product: product,
@@ -135,7 +127,7 @@ useEffect(() => {
         .then(() => {
           console.log('post added');
           setPost(null);
-          setProduct(null)
+          setProduct(null);
         })
         .catch(error => {
           console.log('something went wrong when added post.', error);
@@ -149,22 +141,23 @@ useEffect(() => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Back style={styles.back} />
+          <Back style={styles.back} />
         </TouchableOpacity>
-          <Text style={styles.title}>Create Post</Text>
+        <Text style={styles.title}>Create Post</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.detailPostwrap}>
         <View style={styles.detailPost}>
-        <Text style={styles.postCaptionTitle}>Product Name</Text>
-        <Gap height={12} />
+          <Text style={styles.postCaptionTitle}>Product Name</Text>
+          <Gap height={12} />
           <TextInput
             placeholder="Enter your product"
             value={product}
             onChangeText={content => setProduct(content)}
             style={styles.productInput}
+            width={308}
           />
-           <Gap height={12} />
+          <Gap height={12} />
           <Text style={styles.postCaptionTitle}>Post Caption</Text>
           <TextInput
             placeholder="Enter your post caption"
@@ -173,6 +166,7 @@ useEffect(() => {
             value={post}
             onChangeText={content => setPost(content)}
             style={styles.captionInput}
+            width={308}
           />
           <TouchableOpacity
             style={styles.uploadPicturesTitle}
@@ -183,12 +177,12 @@ useEffect(() => {
           {image && image.uri ? (
             <Image style={styles.addimage} source={{uri: image.uri}} />
           ) : null}
-        <Gap height={20} />
-      <TouchableOpacity onPress={submitPost}>
-        <View style={styles.postButton}>
-          <Text style={styles.postButtonText}>Post !</Text>
-        </View>
-      </TouchableOpacity>
+          <Gap height={20} />
+          <TouchableOpacity onPress={submitPost}>
+            <View style={styles.postButton}>
+              <Text style={styles.postButtonText}>Post !</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -225,7 +219,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     color: 'white',
     marginRight: 190,
-    marginLeft:20,
+    marginLeft: 20,
   },
   detailPostwrap: {
     flexGrow: 1,
@@ -233,7 +227,7 @@ const styles = StyleSheet.create({
   productInput: {
     width: 300,
     height: 41,
-    textAlign:'center',
+    textAlign: 'center',
     color: 'black',
     fontSize: 20,
     borderRadius: 10,
@@ -262,7 +256,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 14,
     textAlign: 'center',
-    width: '90%',
+    width: 90,
     marginBottom: 15,
     color: 'white',
   },

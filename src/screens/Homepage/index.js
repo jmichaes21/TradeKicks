@@ -11,24 +11,18 @@ import firestore from '@react-native-firebase/firestore';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
-  Adidas,
-  AirJordan,
   Category,
   Chat,
   Home,
-  ListSquare,
   Logo,
   Messageicon,
-  Nike,
   Notification,
   Profile,
-  Puma,
   Search,
   Settings,
-  Yeezy,
   PencilIcon,
 } from '../../assets';
-import {Gap} from '../../components';
+import {Gap, Footer} from '../../components';
 
 const Homepage = () => {
   const [userData, setuserData] = useState(null);
@@ -147,43 +141,7 @@ const Homepage = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
-
-      <View style={styles.footer}>
-        <TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('CreatePost')}
-            style={styles.createPostButton}>
-            <PencilIcon />
-          </TouchableOpacity>
-        </TouchableOpacity>
-        <View style={styles.Navigation}>
-          <TouchableOpacity>
-            <View style={styles.footerButtton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
-            <View style={styles.footerButtton}>
-              <Category />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('ListChat')}>
-            <View style={styles.footerButttonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-            <View style={styles.footerButttonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <View style={styles.footerButttonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={true} marginTop={-197} />
     </View>
   );
 };
