@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {Open, TradeDetails, SignInRegister,Homepage, Settings, Category, Profile, Chat, Login, Register, CreatePost, ListChat, ManageAccount} from '../screens';
+import {Open, TradeDetails, SignInRegister,Homepage, Settings, Category, Profile, Chat, Login, Register, CreatePost, ListChat, ManageAccount, Notification} from '../screens';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -70,6 +70,11 @@ const index = () => {
       <Stack.Screen
         name="ManageAccount"
         component={ManageAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Notification"
+        component={Notification}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

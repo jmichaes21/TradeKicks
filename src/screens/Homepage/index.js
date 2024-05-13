@@ -172,7 +172,7 @@ const Homepage = () => {
               <Chat />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
             <View style={styles.footerButttonNotification}>
               <Notification />
             </View>
