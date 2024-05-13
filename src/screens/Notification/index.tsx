@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Category, Chat, Notification as Notif, Settings } from '../../assets/icons';
 import { checked, price, Group } from '../../assets/icons'
-import { Gap } from '../../components';
+import { Footer, Gap } from '../../components';
 import { Logo } from '../../assets';
 
 const Notification = ({ navigation }) => {
@@ -42,7 +42,7 @@ const Notification = ({ navigation }) => {
           </View>
         </View>
       </View>
-    
+      <Footer showCreatePostButton={false} marginTop={-197} />
     </View>
   );
 };
