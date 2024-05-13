@@ -11,24 +11,18 @@ import firestore from '@react-native-firebase/firestore';
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
-  Adidas,
-  AirJordan,
   Category,
   Chat,
   Home,
-  ListSquare,
   Logo,
   Messageicon,
-  Nike,
   Notification,
   Profile,
-  Puma,
   Search,
   Settings,
-  Yeezy,
   PencilIcon,
 } from '../../assets';
-import {Gap} from '../../components';
+import {Gap, Footer} from '../../components';
 
 const Homepage = () => {
   const [userData, setuserData] = useState(null);
@@ -120,9 +114,6 @@ const Homepage = () => {
         <View style={styles.topHeader}>
           <Image source={Logo} style={styles.logo} />
           <Text style={styles.homeText}>Home</Text>
-          <TouchableOpacity>
-            <ListSquare style={styles.ListSquare} />
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Profile style={styles.profile} />
           </TouchableOpacity>
@@ -136,33 +127,7 @@ const Homepage = () => {
           </TouchableOpacity>
         </View>
         <Gap height={12} />
-        <View style={styles.botHeader}>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Nike />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <AirJordan />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainerPuma}>
-              <Puma />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Adidas />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.brandContainer}>
-              <Yeezy />
-            </View>
-          </TouchableOpacity>
-        </View>
+        <View style={styles.botHeader} />
       </View>
 
       <View style={styles.contentContainer}>
@@ -176,43 +141,7 @@ const Homepage = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
-
-      <View style={styles.footer}>
-        <TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('CreatePost')}
-            style={styles.createPostButton}>
-            <PencilIcon />
-          </TouchableOpacity>
-        </TouchableOpacity>
-        <View style={styles.Navigation}>
-          <TouchableOpacity>
-            <View style={styles.footerButtton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
-            <View style={styles.footerButtton}>
-              <Category />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-            <View style={styles.footerButttonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-            <View style={styles.footerButttonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={true} marginTop={-197} />
     </View>
   );
 };
@@ -247,14 +176,17 @@ const styles = StyleSheet.create({
     marginRight: 14,
   },
   profile: {
-    marginTop: 5,
+    marginTop: 18,
+    marginLeft: 80,
+    marginRight: 22,
+    marginBottom: 15,
   },
   midHeader: {
     alignItems: 'center',
     marginTop: -12,
   },
   searchContainer: {
-    marginTop: -5,
+    marginTop: 15,
     alignItems: 'center',
     flexDirection: 'row',
     width: 330,
@@ -268,48 +200,28 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginLeft: 10,
   },
-  botHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  brandContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: 50,
-    height: 48,
-    borderRadius: 10,
-    marginHorizontal: 8,
-    marginBottom: -20,
-    elevation: 10,
-  },
-  brandContainerPuma: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-    width: 53,
-    height: 48,
-    borderRadius: 10,
-    marginHorizontal: 10,
-    marginBottom: -20,
-    elevation: 5,
-  },
   contentContainer: {
-    backgroundColor: 'black',
+    backgroundColor: '#DBD8D8',
+    marginBottom: 100,
+    marginHorizontal: 13,
+    paddingBottom: 100,
   },
   content: {
+    paddingTop: 15,
     backgroundColor: '#DBD8D8',
-    paddingVertical: 20,
+    alignItems: 'center',
+    marginBottom: 100,
+    paddingBottom: 63,
   },
   content1: {
     width: 330,
     height: 330,
     backgroundColor: 'white',
     marginHorizontal: 10,
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 10,
     elevation: 5,
+    marginBottom: 15,
   },
   productImg: {
     width: 310,
@@ -319,8 +231,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   productName: {
-    fontSize: 20,
+    fontSize: 19,
     color: '#13274A',
+    fontWeight: 'bold',
   },
   userCaption: {
     flexDirection: 'row',
@@ -362,6 +275,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: -205,
+    marginBottom: 20,
   },
   footerButtton: {
     width: 25,

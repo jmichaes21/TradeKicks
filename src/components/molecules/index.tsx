@@ -1,4 +1,4 @@
 import TextInput from './TextInput';
-import ItemCard from './ItemCard';
+import Footer from './Footer';
 
-export {TextInput, ItemCard};
+export {TextInput, Footer};

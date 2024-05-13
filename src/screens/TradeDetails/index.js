@@ -40,7 +40,6 @@ const TradeDetails = () => {
               <SetIcon />
             </TouchableOpacity>
           </View>
-
           <View style={styles.informationDetails2}>
             <Text style={styles.informationText2}>Shipping: J&T</Text>
             <TouchableOpacity>
@@ -139,11 +138,11 @@ const styles = StyleSheet.create({
   },
   information: {
     marginTop: 42,
-    width: 330,
+    width: 370,
     height: 230,
     backgroundColor: '#D9D9D9',
     borderRadius: 10,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     paddingHorizontal: 24,
     paddingVertical: 14,
   },
@@ -162,13 +161,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'medium',
     color: 'black',
-    marginRight: 192,
+    marginRight: 143,
   },
   informationText3: {
     fontSize: 14,
     fontWeight: 'medium',
     color: 'black',
-    marginRight: 154,
+    marginRight: 159,
   },
   informationDetails1: {
     flexDirection: 'row',
@@ -183,10 +182,10 @@ const styles = StyleSheet.create({
   informationDetails3: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 70,
+    marginTop: 20,
   },
   Footer: {
-    marginTop: 50,
+    marginTop: 155,
     flexDirection: 'row',
     width: '100%',
     height: 100,

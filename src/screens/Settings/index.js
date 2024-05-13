@@ -11,6 +11,7 @@ import {
   Category as Categoryicon,
 } from '../../assets';
 import {useNavigation} from '@react-navigation/native';
+import {Footer, Gap} from '../../components';
 
 const Settingscreen = () => {
   const navigation = useNavigation();
@@ -19,12 +20,14 @@ const Settingscreen = () => {
       <View style={styles.header}>
         <Image source={Logo} style={styles.logo} />
         <Text style={styles.textSettings}>Settings</Text>
-        <Profile style={styles.profile} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Profile style={styles.profile} />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('ManageAccount')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.textStyle}>Privacy & Security</Text>
+            <Text style={styles.textStyle}>Manage Account</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -34,39 +37,16 @@ const Settingscreen = () => {
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.buttonContainer}>
+            <Text style={styles.textStyle}>Terms and Policies</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.buttonContainer}>
             <Text style={styles.textStyle}>Log Out</Text>
           </View>
         </TouchableOpacity>
       </View>
-      <View style={styles.footer}>
-        <View style={styles.Navigation}>
-          <TouchableOpacity onPress={() => navigation.navigate('Homepage')}>
-            <View style={styles.footerButtton}>
-              <Home />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Category')}>
-            <View style={styles.footerButtton}>
-              <Categoryicon />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-            <View style={styles.footerButttonChat}>
-              <Chat />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonNotification}>
-              <Notification />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.footerButttonSettings}>
-              <Settings />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Footer showCreatePostButton={false} marginTop={425} />
     </View>
   );
 };
@@ -94,15 +74,15 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   profile: {
-    marginLeft: 80,
+    marginLeft: 126,
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 320,
-    height: 40,
+    width: 370,
+    height: 47,
     backgroundColor: '#13274A',
     borderRadius: 10,
     paddingLeft: 16,
@@ -115,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 410,
+    marginTop: '105%',
   },
   footerButtton: {
     width: 25,
@@ -146,7 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
-    fontSize: 13,
+    fontSize: 15,
     color: 'white',
     fontWeight: 'bold',
   },
